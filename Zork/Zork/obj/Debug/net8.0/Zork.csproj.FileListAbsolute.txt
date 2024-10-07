@@ -1,12 +1,17 @@
+C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\bin\Debug\net8.0\Room.cs
 C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\bin\Debug\net8.0\Zork.exe
 C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\bin\Debug\net8.0\Zork.deps.json
 C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\bin\Debug\net8.0\Zork.runtimeconfig.json
 C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\bin\Debug\net8.0\Zork.dll
 C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\bin\Debug\net8.0\Zork.pdb
+C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\obj\Debug\net8.0\Zork.csproj.AssemblyReference.cache
 C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\obj\Debug\net8.0\Zork.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\obj\Debug\net8.0\Zork.AssemblyInfoInputs.cache
 C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\obj\Debug\net8.0\Zork.AssemblyInfo.cs
 C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\obj\Debug\net8.0\Zork.csproj.CoreCompileInputs.cache
+C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\obj\Debug\net8.0\Zork.sourcelink.json
+C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\obj\Debug\net8.0\Zork.csproj.Up2Date
 C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\obj\Debug\net8.0\Zork.dll
 C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\obj\Debug\net8.0\refint\Zork.dll
 C:\Users\ricky\Desktop\GitHub\Zork\Zork\Zork\obj\Debug\net8.0\Zork.pdb

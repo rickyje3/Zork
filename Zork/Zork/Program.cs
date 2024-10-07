@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Diagnostics;
 using System.Text;
+using System.Text.Json;
 
 namespace Zork
 {
@@ -17,9 +19,20 @@ namespace Zork
         UNKNOWN
     }
 
+    enum Fields
+    {
+        Name = 0,
+        Description
+    }
+
+    enum CommandLineArguments
+    {
+        RoomsFileName = 0
+    }
+
     public static class Assert
     {
-        [Conditional("Debug")]
+        [Conditional("DEBUG")]
         public static void IsTrue(bool expression, string message = null)
         {
             if(expression == false)
@@ -31,7 +44,9 @@ namespace Zork
 
     internal class Program
     {
-        private static string CurrentRoom
+        private static readonly Dictionary<string, Room> roomMap;
+
+        private static Room CurrentRoom
         {
             get
             {
@@ -39,14 +54,30 @@ namespace Zork
             }
         }
 
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Zork!");
 
+            //string roomsFileName = "Rooms.txt";
+            
+            const string defaultRoomsFileName = "Rooms.txt";
+            string roomsFileName = (args.Length > 0 ? args[(int)
+                CommandLineArguments.RoomsFileName] : defaultRoomsFileName);
+            InitializeRooms(roomsFileName);
+
+            Room previousRoom = null;
             Commands command = Commands.UNKNOWN;
             while (command != Commands.QUIT)
             {
                 Console.WriteLine(CurrentRoom);
+
+                if (previousRoom != CurrentRoom)
+                {
+                    Console.WriteLine(CurrentRoom.Description);
+                    previousRoom = CurrentRoom;
+                }
+
                 Console.Write("> ");
                 command = ToCommand(Console.ReadLine().Trim());
 
@@ -58,8 +89,7 @@ namespace Zork
                         break;
 
                     case Commands.LOOK:
-                        Console.WriteLine("This is an open field west of a white house, with a boarded front door." +
-                            "\nA rubber mat saying 'Welcome to Zork!' lies by the door");
+                        Console.WriteLine(CurrentRoom.Description);
                         break;
 
                     case Commands.NORTH:
@@ -79,6 +109,12 @@ namespace Zork
             }
         }
 
+
+
+        private static void InitializeRooms(string roomsFileName) =>
+            Rooms = JsonConvert.DeserializeObject<Room[,]>(File.ReadAllText(roomsFileName));
+        
+
         private static bool Move(Commands command)
         {
             Assert.IsTrue(IsDirection(command), "Invalid direction.");
@@ -91,15 +127,15 @@ namespace Zork
                     break;
 
                 case Commands.SOUTH when Location.Row > 0:
-                    Location.Row++;
+                    Location.Row--;
                     break;
 
                 case Commands.EAST when Location.Column < Rooms.GetLength(1) - 1:
                     Location.Column++;
                     break;
 
-                case Commands.EAST when Location.Column > 0:
-                    Location.Column++;
+                case Commands.WEST when Location.Column > 0:
+                    Location.Column--;
                     break;
 
                 default:
@@ -113,12 +149,7 @@ namespace Zork
 
         private static bool IsDirection(Commands command) => Directions.Contains(command);
 
-        private static readonly string[,] Rooms =
-        {
-            {"Rocky Trail", "South of House", "Canyon View" },
-            {"Forest", "West of House", "Behind House" },
-            {"Dense Woods", "North of House", "Clearing" }
-        };
+        private static Room[,] Rooms;
 
         private static readonly List<Commands> Directions = new List<Commands>
         {
