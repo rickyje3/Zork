@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JRlOlekHy9s=",
+  "dgSpecHash": "9VmRZxtB+68=",
   "success": true,
   "projectFilePath": "C:\\Users\\ricky\\Desktop\\GitHub\\Zork\\Zork\\Zork\\Zork.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\ricky\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
